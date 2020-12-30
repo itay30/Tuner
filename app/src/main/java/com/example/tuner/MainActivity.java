@@ -28,27 +28,36 @@ public class MainActivity extends AppCompatActivity {
         final ImageButton violinTuner = findViewById(R.id.ViolinTuner);
         final Context context = this;
 
-        try {
-            guitarTuner.setOnClickListener(v -> {
+
+        guitarTuner.setOnClickListener(v -> {
+            if (ContextCompat.checkSelfPermission(MainActivity.this,
+                    Manifest.permission.RECORD_AUDIO) == PackageManager.PERMISSION_GRANTED) {
                 Intent intent = new Intent(context, GuitarTuner.class);
                 startActivity(intent);
-            });
-        } catch (Exception e){
-            System.out.println(e.getMessage());
-        }
+            } else {
+                requestMicPermission();
+                Toast.makeText(MainActivity.this,"You must grant this permission!",
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
+
 
 
         violinTuner.setOnClickListener(v -> {
             if (ContextCompat.checkSelfPermission(MainActivity.this,
-                    Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+                    Manifest.permission.RECORD_AUDIO) == PackageManager.PERMISSION_GRANTED) {
                 Toast.makeText(MainActivity.this, "You have already granted this permission!",
                         Toast.LENGTH_SHORT).show();
             } else {
-                requestStoragePermission();
+                requestMicPermission();
             }
+            Intent intent = new Intent(context, LoginPage.class);
+            startActivity(intent);
     });
 }
-    private void requestStoragePermission() {
+
+//    #### need to update strings for messages
+    private void requestMicPermission() {
         if (ActivityCompat.shouldShowRequestPermissionRationale(this,
                 Manifest.permission.RECORD_AUDIO)) {
             new AlertDialog.Builder(this)

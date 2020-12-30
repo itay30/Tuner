@@ -82,7 +82,6 @@ public class GuitarTuner extends MainActivity {
         //Initializes the microphone for user input and text boxes for output on screen
         AudioDispatcher dispatcher = AudioDispatcherFactory.fromDefaultMicrophone(22050, 1024, 0);
         final TextView current_hertz = findViewById(R.id.current_hertz);
-        ;
         final TextView expected_note = findViewById(R.id.expected_note);
         final TextView tuner_diff = findViewById(R.id.tuner_diff);
 
