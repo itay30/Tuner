@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "528660187153",
+    "project_id": "mytuner-19e79",
+    "storage_bucket": "mytuner-19e79.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:528660187153:android:ce598aaa10d1d0b98809b0",
+        "android_client_info": {
+          "package_name": "com.example.tuner"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "528660187153-3sekfn1flklt7p63a3c4ad9rc2fi1gur.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJUWNofh1Ob-pw9Ca0TVe2Z9Ri0f9_gi4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "528660187153-3sekfn1flklt7p63a3c4ad9rc2fi1gur.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
