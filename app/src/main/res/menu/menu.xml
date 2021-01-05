@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:content=".GuitarTuner">
+
+        <item
+            android:id="@+id/switch_begginer"
+            android:layout_height="wrap_content"
+            android:orderInCategory="100"
+            android:title="begginer"
+            />
+
+        <item
+            android:id="@+id/switch_expert"
+            android:layout_height="wrap_content"
+            android:orderInCategory="100"
+            android:title="expert"
+            />
+
+    </menu>

@@ -5,7 +5,6 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-
 import android.Manifest;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -37,10 +36,9 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 requestMicPermission();
                 Toast.makeText(MainActivity.this,"You must grant this permission!",
-                        Toast.LENGTH_SHORT).show();
+                        Toast.LENGTH_LONG).show();
             }
         });
-
 
 
         violinTuner.setOnClickListener(v -> {
