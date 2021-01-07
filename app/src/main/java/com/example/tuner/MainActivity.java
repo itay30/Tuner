@@ -22,10 +22,17 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        final ImageButton googlebtn = findViewById(R.id.googlebtn);
         final ImageButton guitarTuner = findViewById(R.id.GuitarTuner);
-        final ImageButton violinTuner = findViewById(R.id.ViolinTuner);
+        final ImageButton ukuleleTuner = findViewById(R.id.UkuleleTuner);
         final Context context = this;
+
+
+        googlebtn.setOnClickListener(v ->{
+                Intent intent = new Intent(context, LoginPage.class);
+                startActivity(intent);
+            });
+
 
 
         guitarTuner.setOnClickListener(v -> {
@@ -41,17 +48,17 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        violinTuner.setOnClickListener(v -> {
-            if (ContextCompat.checkSelfPermission(MainActivity.this,
-                    Manifest.permission.RECORD_AUDIO) == PackageManager.PERMISSION_GRANTED) {
-                Toast.makeText(MainActivity.this, "You have already granted this permission!",
-                        Toast.LENGTH_SHORT).show();
-            } else {
-                requestMicPermission();
-            }
-            Intent intent = new Intent(context, LoginPage.class);
-            startActivity(intent);
-    });
+        ukuleleTuner.setOnClickListener(v -> {
+//            if (ContextCompat.checkSelfPermission(MainActivity.this,
+//                    Manifest.permission.RECORD_AUDIO) == PackageManager.PERMISSION_GRANTED) {
+                Intent intent = new Intent(context, UkuleleTuner.class);
+                startActivity(intent);
+//            } else {
+//                requestMicPermission();
+//                Toast.makeText(MainActivity.this,"You must grant this permission!",
+//                        Toast.LENGTH_LONG).show();
+//            }
+        });
 }
 
 //    #### need to update strings for messages
