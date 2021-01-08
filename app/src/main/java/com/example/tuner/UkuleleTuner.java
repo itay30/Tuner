@@ -70,7 +70,7 @@ public class UkuleleTuner extends AppCompatActivity {
                             //Sets the text boxes to display according to the hertz that was played
                             NearestNoteUkulele nearestNote = getNearestNoteUkulele(inputHertz);
                             int diff = (int) (inputHertz - nearestNote.hertz);
-                            expected_note_ukulele.setText("" + nearestNote.note  +  nearestNote.hertz);
+                            expected_note_ukulele.setText("" + nearestNote.note);
                             tuner_diff_ukulele.setText("" + diff);
                             if (Math.abs(diff) <= 1) {
                                 tuner_diff_ukulele.setTextColor(Color.GREEN);

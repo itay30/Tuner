@@ -8,6 +8,16 @@
     android:background="@drawable/gradient_color"
     >
 
+    <ImageView
+        android:id="@+id/tunerImg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerInside"
+        android:layout_marginTop="140dp"
+        android:layout_marginRight="60dp"
+        android:layout_marginLeft="60dp"
+        android:background="@drawable/ukulelebackground3"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -34,7 +44,6 @@
             android:id="@+id/expected_note_ukulele"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0.5"
             android:gravity="center"
             android:text="expected note"
             android:textColor="#FFFFFF"
@@ -44,7 +53,6 @@
             android:id="@+id/tuner_diff_ukulele"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:gravity="center"
             android:text="tuner diff"
             android:textColor="#FFFFFF"
