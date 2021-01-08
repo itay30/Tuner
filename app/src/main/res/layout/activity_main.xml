@@ -72,7 +72,7 @@
                 android:layout_weight="1"
                 android:background="@null"
                 android:contentDescription="@string/guitar_tuner"
-                app:srcCompat="@drawable/guitarnew1" />
+                app:srcCompat="@drawable/guitaricon" />
 
             <ImageButton
                 android:id="@+id/UkuleleTuner"
