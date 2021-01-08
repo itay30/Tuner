@@ -81,7 +81,7 @@
                 android:layout_weight="1"
                 android:background="@null"
                 android:contentDescription="@string/ukulele_tuner"
-                app:srcCompat="@drawable/violin" />
+                app:srcCompat="@drawable/ukuleleicon" />
         </LinearLayout>
 
         <LinearLayout

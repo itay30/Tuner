@@ -49,15 +49,15 @@ public class MainActivity extends AppCompatActivity {
 
 
         ukuleleTuner.setOnClickListener(v -> {
-//            if (ContextCompat.checkSelfPermission(MainActivity.this,
-//                    Manifest.permission.RECORD_AUDIO) == PackageManager.PERMISSION_GRANTED) {
+            if (ContextCompat.checkSelfPermission(MainActivity.this,
+                    Manifest.permission.RECORD_AUDIO) == PackageManager.PERMISSION_GRANTED) {
                 Intent intent = new Intent(context, UkuleleTuner.class);
                 startActivity(intent);
-//            } else {
-//                requestMicPermission();
-//                Toast.makeText(MainActivity.this,"You must grant this permission!",
-//                        Toast.LENGTH_LONG).show();
-//            }
+            } else {
+                requestMicPermission();
+                Toast.makeText(MainActivity.this,"You must grant this permission!",
+                        Toast.LENGTH_LONG).show();
+            }
         });
 }
 
