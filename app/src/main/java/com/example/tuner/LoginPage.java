@@ -5,11 +5,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -40,8 +42,16 @@ public class LoginPage extends AppCompatActivity implements View.OnClickListener
         setContentView(R.layout.activity_login_page);
 
         findViewById(R.id.sign_in_button).setOnClickListener(this);
+        final ImageButton backtomain = findViewById(R.id.backtomain);
+        final Context context = this;
 
         mAuth = FirebaseAuth.getInstance();
+
+
+        backtomain.setOnClickListener(v -> {
+            Intent intent = new Intent(context, MainActivity.class);
+            startActivity(intent);
+        });
 
         // Configure sign-in to request the user's ID, email address, and basic
         // profile. ID and basic profile are included in DEFAULT_SIGN_IN.

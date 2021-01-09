@@ -8,8 +8,13 @@ import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.content.Context;
 import be.tarsos.dsp.AudioDispatcher;
@@ -109,6 +114,33 @@ public class UkuleleTuner extends AppCompatActivity {
             nearest_note = new NearestNoteUkulele(-1, ' ');
 
         return nearest_note;
+    }
+
+    final Context context = this;
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int itemID = item.getItemId();
+        if (itemID == R.id.switch_begginer){
+            Intent intent = new Intent(context, GuitarTuner.class);
+                UkuleleTuner.this.startActivity(intent);}
+        else if (itemID == R.id.switch_expert){
+            Intent intent = new Intent(context, GuitarTunerExpert.class);
+                UkuleleTuner.this.startActivity(intent);}
+        else if (itemID == R.id.switch_ukulele){
+            Toast.makeText(context,"you are allready in this mode", Toast.LENGTH_LONG).show();}
+        return super.onOptionsItemSelected(item);
+    }
+    public void showPopup(View v) {
+        PopupMenu popup = new PopupMenu(this, v);
+        MenuInflater inflater = popup.getMenuInflater();
+        inflater.inflate(R.menu.menu, popup.getMenu());
+        popup.show();
+        popup.setOnMenuItemClickListener(this::onOptionsItemSelected);
     }
 
 }

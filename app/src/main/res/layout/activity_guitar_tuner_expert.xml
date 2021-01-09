@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".GuitarTunerExpert"
-    android:background="@drawable/gradient_color">
+    android:background="@drawable/appbackground">
 
 
     <LinearLayout
@@ -31,7 +31,7 @@
             android:layout_marginLeft="214dp"
             android:layout_marginTop="3dp"
             android:background="@null"
-            app:srcCompat="@drawable/backicon" />
+            app:srcCompat="@drawable/backiconwhite" />
 
     </LinearLayout>
 
