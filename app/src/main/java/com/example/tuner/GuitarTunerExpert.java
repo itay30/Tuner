@@ -56,7 +56,7 @@ public class GuitarTunerExpert extends AppCompatActivity {
         final TextView expected_note_expert = findViewById(R.id.expected_note_expert);
         final TextView tuner_diff_expert = findViewById(R.id.tuner_diff_expert);
         final Button choosebtn = findViewById(R.id.btnShow);
-        final Button backtomain = findViewById(R.id.backtomain);
+        final ImageButton backtomain = findViewById(R.id.backtomain);
 
         backtomain.setOnClickListener(v -> {
             Intent intent = new Intent(context, MainActivity.class);
@@ -136,8 +136,10 @@ public class GuitarTunerExpert extends AppCompatActivity {
             Intent intent = new Intent(context, GuitarTuner.class);
                 GuitarTunerExpert.this.startActivity(intent);}
         else if (itemID == R.id.switch_expert){
-            Toast.makeText(context,"you are allready in this mode", Toast.LENGTH_LONG).show();
-        }
+            Toast.makeText(context,"you are allready in this mode", Toast.LENGTH_LONG).show(); }
+        else if (itemID == R.id.switch_ukulele){
+                Intent intent = new Intent(context, UkuleleTuner.class);
+                    GuitarTunerExpert.this.startActivity(intent);}
         return super.onOptionsItemSelected(item);
     }
     public void showPopup(View v) {

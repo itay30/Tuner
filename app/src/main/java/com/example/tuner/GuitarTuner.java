@@ -56,7 +56,7 @@ public class GuitarTuner extends MainActivity {
         final TextView expected_note = findViewById(R.id.expected_note);
         final TextView tuner_diff = findViewById(R.id.tuner_diff);
         final Button choosebtn = findViewById(R.id.btnShow);
-        final Button backtomain = findViewById(R.id.backtomain);
+        final ImageButton backtomain = findViewById(R.id.backtomain);
 
         backtomain.setOnClickListener(v -> {
                 Intent intent = new Intent(context, MainActivity.class);
@@ -136,6 +136,9 @@ public class GuitarTuner extends MainActivity {
             Toast.makeText(context,"you are allready in this mode", Toast.LENGTH_LONG).show();
         else if (itemID == R.id.switch_expert){
                 Intent intent = new Intent(context, GuitarTunerExpert.class);
+                    GuitarTuner.this.startActivity(intent);}
+        else if (itemID == R.id.switch_ukulele){
+                Intent intent = new Intent(context, UkuleleTuner.class);
                     GuitarTuner.this.startActivity(intent);}
         return super.onOptionsItemSelected(item);
     }

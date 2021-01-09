@@ -49,7 +49,7 @@ public class UkuleleTuner extends AppCompatActivity {
         AudioDispatcher dispatcher = AudioDispatcherFactory.fromDefaultMicrophone(22050, 1024, 0);
         final TextView expected_note_ukulele = findViewById(R.id.expected_note_ukulele);
         final TextView tuner_diff_ukulele = findViewById(R.id.tuner_diff_ukulele);
-        final Button backtomain = findViewById(R.id.backtomain);
+        final ImageButton backtomain = findViewById(R.id.backtomain);
         final Context context = this;
 
         backtomain.setOnClickListener(v -> {
@@ -110,4 +110,5 @@ public class UkuleleTuner extends AppCompatActivity {
 
         return nearest_note;
     }
+
 }
