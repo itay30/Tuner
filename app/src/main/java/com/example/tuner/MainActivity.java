@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         final ImageButton googlebtn = findViewById(R.id.googlebtn);
         final ImageButton guitarTuner = findViewById(R.id.GuitarTuner);
-        final ImageButton ukuleleTuner = findViewById(R.id.UkuleleTuner);
+//        final ImageButton ukuleleTuner = findViewById(R.id.UkuleleTuner);
         final Context context = this;
 
 
@@ -48,17 +48,17 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        ukuleleTuner.setOnClickListener(v -> {
-            if (ContextCompat.checkSelfPermission(MainActivity.this,
-                    Manifest.permission.RECORD_AUDIO) == PackageManager.PERMISSION_GRANTED) {
-                Intent intent = new Intent(context, UkuleleTuner.class);
-                startActivity(intent);
-            } else {
-                requestMicPermission();
-                Toast.makeText(MainActivity.this,"You must grant this permission!",
-                        Toast.LENGTH_LONG).show();
-            }
-        });
+//        ukuleleTuner.setOnClickListener(v -> {
+//            if (ContextCompat.checkSelfPermission(MainActivity.this,
+//                    Manifest.permission.RECORD_AUDIO) == PackageManager.PERMISSION_GRANTED) {
+//                Intent intent = new Intent(context, UkuleleTuner.class);
+//                startActivity(intent);
+//            } else {
+//                requestMicPermission();
+//                Toast.makeText(MainActivity.this,"You must grant this permission!",
+//                        Toast.LENGTH_LONG).show();
+//            }
+//        });
 }
 
 //    #### need to update strings for messages

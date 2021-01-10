@@ -77,7 +77,7 @@ public class GuitarTunerExpert extends AppCompatActivity {
                             current_hertz_expert.setText("" + String.format("%.1f", inputHertz));
                             NearestNoteExpert nearestNote = getNearestNoteExpert(inputHertz);
                             int diff = (int) (inputHertz - nearestNote.hertz);
-                            expected_note_expert.setText("" + nearestNote.note  +  nearestNote.hertz);
+                            expected_note_expert.setText("" + nearestNote.note  + " (" + nearestNote.hertz+ ")" );
                             tuner_diff_expert.setText("" + diff);
                             if (Math.abs(diff) <= 1) {
                                 tuner_diff_expert.setTextColor(Color.GREEN);
@@ -136,7 +136,7 @@ public class GuitarTunerExpert extends AppCompatActivity {
             Intent intent = new Intent(context, GuitarTuner.class);
                 GuitarTunerExpert.this.startActivity(intent);}
         else if (itemID == R.id.switch_expert){
-            Toast.makeText(context,"you are allready in this mode", Toast.LENGTH_LONG).show(); }
+            Toast.makeText(context,"you are allready in this mode", Toast.LENGTH_SHORT).show(); }
         else if (itemID == R.id.switch_ukulele){
                 Intent intent = new Intent(context, UkuleleTuner.class);
                     GuitarTunerExpert.this.startActivity(intent);}

@@ -132,7 +132,7 @@ public class UkuleleTuner extends AppCompatActivity {
             Intent intent = new Intent(context, GuitarTunerExpert.class);
                 UkuleleTuner.this.startActivity(intent);}
         else if (itemID == R.id.switch_ukulele){
-            Toast.makeText(context,"you are allready in this mode", Toast.LENGTH_LONG).show();}
+            Toast.makeText(context,"you are allready in this mode", Toast.LENGTH_SHORT).show();}
         return super.onOptionsItemSelected(item);
     }
     public void showPopup(View v) {

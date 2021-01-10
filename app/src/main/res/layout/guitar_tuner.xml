@@ -26,18 +26,17 @@
             android:id="@+id/btnShow"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginLeft="7dp"
+            android:layout_marginTop="7dp"
             android:onClick="showPopup"
-            android:text="begginer"
+            android:text="Begginer"
             android:background="@drawable/rounded_corners"/>
 
         <ImageButton
             android:id="@+id/backtomain"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="214dp"
-            android:layout_marginTop="2dp"
+            android:layout_marginLeft="205dp"
             android:background="@null"
             app:srcCompat="@drawable/backiconwhite" />
 
@@ -68,9 +67,7 @@
             android:textColor="#FFFFFF"
             android:textSize="40sp" />
 
-
-
-        <!--        <TextView-->
+<!--        !&#45;&#45;        <TextView&ndash;&gt;-->
 <!--            android:id="@+id/current_hertz"-->
 <!--            android:layout_width="match_parent"-->
 <!--            android:layout_height="wrap_content"-->

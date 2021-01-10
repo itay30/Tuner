@@ -10,7 +10,7 @@
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="vertical"
         app:layout_constraintTop_toTopOf="parent">
@@ -19,9 +19,10 @@
             android:id="@+id/googlebtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="150dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="155dp"
             android:background="@null"
-            app:srcCompat="@drawable/common_google_signin_btn_icon_dark" />
+            app:srcCompat="@drawable/common_google_signin_btn_icon_light" />
     </LinearLayout>
 
     <LinearLayout
@@ -40,6 +41,7 @@
             android:id="@+id/project_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:layout_marginBottom="200dp"
             android:fontFamily="sans-serif-condensed"
             android:gravity="center"
@@ -52,7 +54,8 @@
             android:id="@+id/Title6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
+            android:layout_marginTop="55dp"
+            android:layout_marginBottom="7dp"
             android:fontFamily="sans-serif-condensed"
             android:text="@string/title6"
             android:textColor="#FFFFFF"
@@ -63,6 +66,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
+            android:layout_marginTop="10dp"
             android:orientation="horizontal">
 
             <ImageButton
@@ -74,14 +78,14 @@
                 android:contentDescription="@string/guitar_tuner"
                 app:srcCompat="@drawable/guitaricon" />
 
-            <ImageButton
-                android:id="@+id/UkuleleTuner"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@null"
-                android:contentDescription="@string/ukulele_tuner"
-                app:srcCompat="@drawable/ukuleleicon" />
+<!--            <ImageButton-->
+<!--                android:id="@+id/UkuleleTuner"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_weight="1"-->
+<!--                android:background="@null"-->
+<!--                android:contentDescription="@string/ukulele_tuner"-->
+<!--                app:srcCompat="@drawable/ukuleleicon" />-->
         </LinearLayout>
 
         <LinearLayout
@@ -95,22 +99,23 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:layout_marginTop="5dp"
                 android:fontFamily="sans-serif-condensed"
                 android:gravity="center"
                 android:text="@string/instruction1"
                 android:textColor="#FFFFFF"
                 android:textSize="18sp" />
 
-            <TextView
-                android:id="@+id/Instruction2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:fontFamily="sans-serif-condensed"
-                android:gravity="center"
-                android:text="@string/instruction2"
-                android:textColor="#FFFFFF"
-                android:textSize="18sp" />
+<!--            <TextView-->
+<!--                android:id="@+id/Instruction2"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_weight="1"-->
+<!--                android:fontFamily="sans-serif-condensed"-->
+<!--                android:gravity="center"-->
+<!--                android:text="@string/instruction2"-->
+<!--                android:textColor="#FFFFFF"-->
+<!--                android:textSize="18sp" />-->
         </LinearLayout>
 
     </LinearLayout>

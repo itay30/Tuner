@@ -18,18 +18,17 @@
             android:id="@+id/btnShow"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginLeft="7dp"
+            android:layout_marginTop="7dp"
             android:onClick="showPopup"
-            android:text="expert"
+            android:text="Expert"
             android:background="@drawable/rounded_corners"/>
 
         <ImageButton
             android:id="@+id/backtomain"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="214dp"
-            android:layout_marginTop="3dp"
+            android:layout_marginLeft="205dp"
             android:background="@null"
             app:srcCompat="@drawable/backiconwhite" />
 

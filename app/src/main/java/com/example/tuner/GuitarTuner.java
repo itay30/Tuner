@@ -133,7 +133,7 @@ public class GuitarTuner extends MainActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int itemID = item.getItemId();
         if (itemID == R.id.switch_begginer)
-            Toast.makeText(context,"you are allready in this mode", Toast.LENGTH_LONG).show();
+            Toast.makeText(context,"you are allready in this mode", Toast.LENGTH_SHORT).show();
         else if (itemID == R.id.switch_expert){
                 Intent intent = new Intent(context, GuitarTunerExpert.class);
                     GuitarTuner.this.startActivity(intent);}
