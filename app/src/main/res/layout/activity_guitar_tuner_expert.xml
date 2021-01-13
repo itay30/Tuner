@@ -50,12 +50,21 @@
         android:textColor="#FFFFFF"
         android:textSize="60sp" />
 
-    <TextView
+        <TextView
+            android:id="@+id/expected_note_hertz_expert"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="120 Hz"
+            android:textColor="#FFFFFF"
+            android:textSize="40sp" />
+
+        <TextView
         android:id="@+id/tuner_diff_expert"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="120dp"
         android:text="tuner diff"
         android:textColor="#FFFFFF"
         android:textSize="40sp" />
@@ -65,7 +74,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:layout_marginTop="150dp"
+            android:layout_marginTop="120dp"
             android:text="current hertz"
             android:textColor="#FFFFFF"
             android:textSize="40sp" />
