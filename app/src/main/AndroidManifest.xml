@@ -11,7 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="false"
         android:theme="@style/Theme.AppCompat.NoActionBar">
-        <activity android:name=".UkuleleTuner"></activity>
+        <activity android:name=".BassTuner"></activity>
+        <activity android:name=".information" />
+        <activity android:name=".UkuleleTuner" />
         <activity android:name=".GuitarTunerExpert" />
         <activity android:name=".LoginPage" />
         <activity android:name=".MainActivity">

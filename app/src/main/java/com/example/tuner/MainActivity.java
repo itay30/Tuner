@@ -10,6 +10,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
@@ -22,11 +23,18 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         final ImageButton googlebtn = findViewById(R.id.googlebtn);
+        final ImageButton info = findViewById(R.id.info);
         final ImageButton guitarTuner = findViewById(R.id.GuitarTuner);
 //        final ImageButton ukuleleTuner = findViewById(R.id.UkuleleTuner);
         final Context context = this;
 
+
+        info.setOnClickListener(v ->{
+            Intent intent = new Intent(context, information.class);
+            startActivity(intent);
+        });
 
         googlebtn.setOnClickListener(v ->{
                 Intent intent = new Intent(context, LoginPage.class);

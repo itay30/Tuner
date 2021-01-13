@@ -10,4 +10,5 @@
     <string name="ukulele_tuner">Click on the rightmost button to access the violin tuner</string>
     <string name="instruction1">Guitar Tuner</string>
     <string name="instruction2">Ukulele Tuner</string>
+    <string name="information">*If the tuner doesnt work please make sure that you have enabled microphone access</string>
 </resources>

@@ -27,8 +27,8 @@ import be.tarsos.dsp.pitch.PitchProcessor;
 import android.widget.Toast;
 
 
-class NearestNoteUkulele {
-    NearestNoteUkulele( double _hertz, char _note) {
+class NearestNoteBass {
+    NearestNoteBass( double _hertz, char _note) {
         this.hertz = _hertz;
         this.note = _note;
     }
@@ -43,17 +43,17 @@ class NearestNoteUkulele {
     }
 }
 
-public class UkuleleTuner extends AppCompatActivity {
+public class BassTuner extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ukulele_tuner);
+        setContentView(R.layout.activity_bass_tuner);
 
         //Initializes the microphone for user input and text boxes for output on screen
         AudioDispatcher dispatcher = AudioDispatcherFactory.fromDefaultMicrophone(22050, 1024, 0);
-        final TextView expected_note_ukulele = findViewById(R.id.expected_note_ukulele);
-        final TextView tuner_diff_ukulele = findViewById(R.id.tuner_diff_ukulele);
+        final TextView expected_note_bass = findViewById(R.id.expected_note_bass);
+        final TextView tuner_diff_bass = findViewById(R.id.tuner_diff_bass);
         final ImageButton backtomain = findViewById(R.id.backtomain);
         final Context context = this;
 
@@ -73,20 +73,20 @@ public class UkuleleTuner extends AppCompatActivity {
                         @Override
                         public void run() {
                             //Sets the text boxes to display according to the hertz that was played
-                            NearestNoteUkulele nearestNote = getNearestNoteUkulele(inputHertz);
+                            NearestNoteBass nearestNote = getNearestNoteBass(inputHertz);
                             int diff = (int) (inputHertz - nearestNote.hertz);
-                            expected_note_ukulele.setText("" + nearestNote.note);
-                            tuner_diff_ukulele.setText("" + diff);
+                            expected_note_bass.setText("" + nearestNote.note);
+                            tuner_diff_bass.setText("" + diff);
                             if (Math.abs(diff) <= 1) {
-                                tuner_diff_ukulele.setTextColor(Color.GREEN);
+                                tuner_diff_bass.setTextColor(Color.GREEN);
                             } else if (Math.abs(diff) <= 3) {
-                                tuner_diff_ukulele.setTextColor(Color.YELLOW);
+                                tuner_diff_bass.setTextColor(Color.YELLOW);
                             } else if (Math.abs(diff) <= 15) {
-                                tuner_diff_ukulele.setTextColor(Color.RED);
+                                tuner_diff_bass.setTextColor(Color.RED);
                             }
                             else{
-                                expected_note_ukulele.setText("");
-                                tuner_diff_ukulele.setText("");
+                                expected_note_bass.setText("");
+                                tuner_diff_bass.setText("");
                             }
                         }
                     });
@@ -100,18 +100,18 @@ public class UkuleleTuner extends AppCompatActivity {
         //Starts the thread
         new Thread(dispatcher).start();
     }
-    public static NearestNoteUkulele getNearestNoteUkulele(double inputHertz) {
-        NearestNoteUkulele nearest_note;
-        if (inputHertz >= 377 && inputHertz < 407)
-            nearest_note = new NearestNoteUkulele(392, 'G');
-        else if (inputHertz >= 246 && inputHertz < 276)
-            nearest_note = new NearestNoteUkulele(261.6, 'C');
-        else if (inputHertz >= 315 && inputHertz < 345)
-            nearest_note = new NearestNoteUkulele(329.6, 'E');
-        else if (inputHertz >= 425 && inputHertz < 455)
-            nearest_note = new NearestNoteUkulele(440, 'A');
+    public static NearestNoteBass getNearestNoteBass(double inputHertz) {
+        NearestNoteBass nearest_note;
+        if (inputHertz >= 26 && inputHertz < 56)
+            nearest_note = new NearestNoteBass(41.2, 'E');
+        else if (inputHertz >= 40 && inputHertz < 70)
+            nearest_note = new NearestNoteBass(55.0, 'A');
+        else if (inputHertz >= 58 && inputHertz < 88)
+            nearest_note = new NearestNoteBass(73.4, 'D');
+        else if (inputHertz >= 83 && inputHertz < 113)
+            nearest_note = new NearestNoteBass(98.0, 'G');
         else
-            nearest_note = new NearestNoteUkulele(-1, ' ');
+            nearest_note = new NearestNoteBass(-1, ' ');
 
         return nearest_note;
     }
@@ -127,15 +127,15 @@ public class UkuleleTuner extends AppCompatActivity {
         int itemID = item.getItemId();
         if (itemID == R.id.switch_begginer){
             Intent intent = new Intent(context, GuitarTuner.class);
-                UkuleleTuner.this.startActivity(intent);}
+            BassTuner.this.startActivity(intent);}
         else if (itemID == R.id.switch_expert){
             Intent intent = new Intent(context, GuitarTunerExpert.class);
-                UkuleleTuner.this.startActivity(intent);}
+            BassTuner.this.startActivity(intent);}
         else if (itemID == R.id.switch_ukulele){
-            Toast.makeText(context,"you are allready in this mode", Toast.LENGTH_SHORT).show();}
+            Intent intent = new Intent(context, UkuleleTuner.class);
+            BassTuner.this.startActivity(intent);}
         else if (itemID == R.id.switch_bass){
-            Intent intent = new Intent(context, BassTuner.class);
-                UkuleleTuner.this.startActivity(intent);}
+            Toast.makeText(context,"you are allready in this mode", Toast.LENGTH_SHORT).show();}
         return super.onOptionsItemSelected(item);
     }
     public void showPopup(View v) {

@@ -140,6 +140,9 @@ public class GuitarTuner extends MainActivity {
         else if (itemID == R.id.switch_ukulele){
                 Intent intent = new Intent(context, UkuleleTuner.class);
                     GuitarTuner.this.startActivity(intent);}
+        else if (itemID == R.id.switch_bass){
+                Intent intent = new Intent(context, BassTuner.class);
+                    GuitarTuner.this.startActivity(intent);}
         return super.onOptionsItemSelected(item);
     }
 

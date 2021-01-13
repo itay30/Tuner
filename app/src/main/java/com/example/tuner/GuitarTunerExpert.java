@@ -39,7 +39,7 @@ class NearestNoteExpert {
     public String toString() {
         if (hertz == -1)
             return " ";
-        return  "" + note + "\n" + hertz + " Hz";
+        return  "" + note + "(" + hertz + ")" + " Hz";
     }
 }
 
@@ -54,6 +54,7 @@ public class GuitarTunerExpert extends AppCompatActivity {
         AudioDispatcher dispatcher = AudioDispatcherFactory.fromDefaultMicrophone(22050, 1024, 0);
         final TextView current_hertz_expert = findViewById(R.id.current_hertz);
         final TextView expected_note_expert = findViewById(R.id.expected_note_expert);
+        final TextView expected_note_hertz_expert = findViewById(R.id.expected_note_hertz_expert);
         final TextView tuner_diff_expert = findViewById(R.id.tuner_diff_expert);
         final Button choosebtn = findViewById(R.id.btnShow);
         final ImageButton backtomain = findViewById(R.id.backtomain);
@@ -77,7 +78,8 @@ public class GuitarTunerExpert extends AppCompatActivity {
                             current_hertz_expert.setText("" + String.format("%.1f", inputHertz));
                             NearestNoteExpert nearestNote = getNearestNoteExpert(inputHertz);
                             int diff = (int) (inputHertz - nearestNote.hertz);
-                            expected_note_expert.setText("" + nearestNote.note  + " (" + nearestNote.hertz+ ")" );
+                            expected_note_expert.setText("" + nearestNote.note);
+                            expected_note_hertz_expert.setText("(" + nearestNote.hertz + ")" + "Hz");
                             tuner_diff_expert.setText("" + diff);
                             if (Math.abs(diff) <= 1) {
                                 tuner_diff_expert.setTextColor(Color.GREEN);
@@ -88,6 +90,7 @@ public class GuitarTunerExpert extends AppCompatActivity {
                             }
                             else{
                                 expected_note_expert.setText("");
+                                expected_note_hertz_expert.setText("");
                                 tuner_diff_expert.setText("");
                             }
                         }
@@ -138,8 +141,11 @@ public class GuitarTunerExpert extends AppCompatActivity {
         else if (itemID == R.id.switch_expert){
             Toast.makeText(context,"you are allready in this mode", Toast.LENGTH_SHORT).show(); }
         else if (itemID == R.id.switch_ukulele){
-                Intent intent = new Intent(context, UkuleleTuner.class);
-                    GuitarTunerExpert.this.startActivity(intent);}
+            Intent intent = new Intent(context, UkuleleTuner.class);
+                GuitarTunerExpert.this.startActivity(intent);}
+        else if (itemID == R.id.switch_bass){
+            Intent intent = new Intent(context, BassTuner.class);
+                GuitarTunerExpert.this.startActivity(intent);}
         return super.onOptionsItemSelected(item);
     }
     public void showPopup(View v) {
