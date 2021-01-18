@@ -136,6 +136,9 @@ public class UkuleleTuner extends AppCompatActivity {
         else if (itemID == R.id.switch_bass){
             Intent intent = new Intent(context, BassTuner.class);
                 UkuleleTuner.this.startActivity(intent);}
+        else if (itemID == R.id.switch_general){
+            Intent intent = new Intent(context, GeneralTuner.class);
+                UkuleleTuner.this.startActivity(intent);}
         return super.onOptionsItemSelected(item);
     }
     public void showPopup(View v) {

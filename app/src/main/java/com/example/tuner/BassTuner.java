@@ -136,6 +136,9 @@ public class BassTuner extends AppCompatActivity {
             BassTuner.this.startActivity(intent);}
         else if (itemID == R.id.switch_bass){
             Toast.makeText(context,"you are allready in this mode", Toast.LENGTH_SHORT).show();}
+        else if (itemID == R.id.switch_general){
+            Intent intent = new Intent(context, GeneralTuner.class);
+            BassTuner.this.startActivity(intent);}
         return super.onOptionsItemSelected(item);
     }
     public void showPopup(View v) {

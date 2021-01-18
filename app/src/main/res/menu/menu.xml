@@ -29,4 +29,11 @@
             android:title="Bass"
             />
 
+        <item
+            android:id="@+id/switch_general"
+            android:layout_height="wrap_content"
+            android:orderInCategory="100"
+            android:title="General"
+            />
+
     </menu>

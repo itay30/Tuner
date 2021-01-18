@@ -146,6 +146,9 @@ public class GuitarTunerExpert extends AppCompatActivity {
         else if (itemID == R.id.switch_bass){
             Intent intent = new Intent(context, BassTuner.class);
                 GuitarTunerExpert.this.startActivity(intent);}
+        else if (itemID == R.id.switch_general){
+            Intent intent = new Intent(context, GeneralTuner.class);
+                GuitarTunerExpert.this.startActivity(intent);}
         return super.onOptionsItemSelected(item);
     }
     public void showPopup(View v) {
