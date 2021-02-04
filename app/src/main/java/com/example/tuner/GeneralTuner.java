@@ -142,6 +142,7 @@ public class GeneralTuner extends AppCompatActivity {
             @Override
             public void handlePitch(PitchDetectionResult inputSound, AudioEvent e) {
                 final double inputHertz = (double) inputSound.getPitch();   //Method which converts input sound to its pitch in hertz
+                final int ORANGE = Color.rgb(255,145,0);
                 if (inputHertz != -1) {
                     runOnUiThread(new Runnable() {
                         @Override
@@ -149,13 +150,23 @@ public class GeneralTuner extends AppCompatActivity {
                             //Sets the text boxes to display according to the hertz that was played
                             current_hertz_general.setText("" + String.format("%.1f", inputHertz));
                             Note note = new Note(inputHertz);
-                            int diff = (int) (inputHertz - note.getExactFrequency());
+                            double diff = (inputHertz - note.getExactFrequency());
                             expected_note_general.setText("" +note.toString());
-                            tuner_diff_general.setText("" + diff);
-                            if (Math.abs(diff) <= 1) {
+                            tuner_diff_general.setText("" + String.format("%.0f", diff));
+                            if (diff >= 0 && diff < 0.5) {
+                                tuner_diff_general.setText("0");
                                 tuner_diff_general.setTextColor(Color.GREEN);
-                            } else if (Math.abs(diff) <= 3) {
+                            } else if (diff > -0.5 && diff <= 0) {
+                                tuner_diff_general.setText("0");
+                                tuner_diff_general.setTextColor(Color.GREEN);
+                            } else if (diff >= -2 && diff < -0.5) {
+                                tuner_diff_general.setText("-1");
                                 tuner_diff_general.setTextColor(Color.YELLOW);
+                            } else if (diff > 0.5 && diff <= 2) {
+                                tuner_diff_general.setText("1");
+                                tuner_diff_general.setTextColor(Color.YELLOW);
+                            } else if (Math.abs(diff) <= 5) {
+                                tuner_diff_general.setTextColor(ORANGE);
                             } else if (Math.abs(diff) <= 15) {
                                 tuner_diff_general.setTextColor(Color.RED);
                             }

@@ -1,13 +1,9 @@
 package com.example.tuner;
 
 
-import android.Manifest;
+
 import android.content.Intent;
 import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
-
-import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -69,20 +65,30 @@ public class GuitarTuner extends MainActivity {
             @Override
             public void handlePitch(PitchDetectionResult inputSound, AudioEvent e) {
                 final double inputHertz = (double) inputSound.getPitch();   //Method which converts input sound to its pitch in hertz
+                final int ORANGE = Color.rgb(255,145,0);
                 if (inputHertz != -1) {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            //Sets the text boxes to display according to the hertz that was played
-//                            current_hertz.setText("" + String.format("%.1f", inputHertz));
+                            //Sets the text boxes to display according to the hertz that is playing
                             NearestNote nearestNote = getNearestNote(inputHertz);
-                            int diff = (int) (inputHertz - nearestNote.hertz);
+                            double diff = (inputHertz - nearestNote.hertz);
                             expected_note.setText("" + nearestNote.note);
-                            tuner_diff.setText("" + diff);
-                            if (Math.abs(diff) <= 1) {
+                            tuner_diff.setText("" + String.format("%.0f", diff));
+                            if (diff >= 0 && diff < 0.3) {
+                                tuner_diff.setText("0");
                                 tuner_diff.setTextColor(Color.GREEN);
-                            } else if (Math.abs(diff) <= 3) {
+                            } else if (diff > -0.3 && diff <= 0) {
+                                tuner_diff.setText("0");
+                                tuner_diff.setTextColor(Color.GREEN);
+                            } else if (diff >= -2 && diff < -0.3) {
+                                tuner_diff.setText("-1");
                                 tuner_diff.setTextColor(Color.YELLOW);
+                            } else if (diff > 0.3 && diff <= 2) {
+                                tuner_diff.setText("1");
+                                tuner_diff.setTextColor(Color.YELLOW);
+                            } else if (Math.abs(diff) <= 5) {
+                                tuner_diff.setTextColor(ORANGE);
                             } else if (Math.abs(diff) <= 15) {
                                 tuner_diff.setTextColor(Color.RED);
                             }

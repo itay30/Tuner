@@ -70,6 +70,7 @@ public class GuitarTunerExpert extends AppCompatActivity {
             @Override
             public void handlePitch(PitchDetectionResult inputSound, AudioEvent e) {
                 final double inputHertz = (double) inputSound.getPitch();   //Method which converts input sound to its pitch in hertz
+                final int ORANGE = Color.rgb(255,145,0);
                 if (inputHertz != -1) {
                     runOnUiThread(new Runnable() {
                         @Override
@@ -77,14 +78,24 @@ public class GuitarTunerExpert extends AppCompatActivity {
                             //Sets the text boxes to display according to the hertz that was played
                             current_hertz_expert.setText("" + String.format("%.1f", inputHertz));
                             NearestNoteExpert nearestNote = getNearestNoteExpert(inputHertz);
-                            int diff = (int) (inputHertz - nearestNote.hertz);
+                            double diff = (inputHertz - nearestNote.hertz);
                             expected_note_expert.setText("" + nearestNote.note);
                             expected_note_hertz_expert.setText("(" + nearestNote.hertz + ")" + "Hz");
-                            tuner_diff_expert.setText("" + diff);
-                            if (Math.abs(diff) <= 1) {
+                            tuner_diff_expert.setText("" + String.format("%.0f", diff));
+                            if (diff >= 0 && diff < 0.3) {
+                                tuner_diff_expert.setText("0");
                                 tuner_diff_expert.setTextColor(Color.GREEN);
-                            } else if (Math.abs(diff) <= 3) {
+                            } else if (diff > -0.3 && diff <= 0) {
+                                tuner_diff_expert.setText("0");
+                                tuner_diff_expert.setTextColor(Color.GREEN);
+                            } else if (diff >= -2 && diff < -0.3) {
+                                tuner_diff_expert.setText("-1");
                                 tuner_diff_expert.setTextColor(Color.YELLOW);
+                            } else if (diff > 0.3 && diff <= 2) {
+                                tuner_diff_expert.setText("1");
+                                tuner_diff_expert.setTextColor(Color.YELLOW);
+                            } else if (Math.abs(diff) <= 5) {
+                                tuner_diff_expert.setTextColor(ORANGE);
                             } else if (Math.abs(diff) <= 15) {
                                 tuner_diff_expert.setTextColor(Color.RED);
                             }

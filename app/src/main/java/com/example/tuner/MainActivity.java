@@ -27,8 +27,14 @@ public class MainActivity extends AppCompatActivity {
         final ImageButton googlebtn = findViewById(R.id.googlebtn);
         final ImageButton info = findViewById(R.id.info);
         final ImageButton guitarTuner = findViewById(R.id.GuitarTuner);
-//        final ImageButton ukuleleTuner = findViewById(R.id.UkuleleTuner);
         final Context context = this;
+
+        if (ContextCompat.checkSelfPermission(MainActivity.this,
+                Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
+            requestMicPermission();
+            Toast.makeText(MainActivity.this,"You must grant this permission!",
+                    Toast.LENGTH_LONG).show();
+        }
 
 
         info.setOnClickListener(v ->{
@@ -54,19 +60,6 @@ public class MainActivity extends AppCompatActivity {
                         Toast.LENGTH_LONG).show();
             }
         });
-
-
-//        ukuleleTuner.setOnClickListener(v -> {
-//            if (ContextCompat.checkSelfPermission(MainActivity.this,
-//                    Manifest.permission.RECORD_AUDIO) == PackageManager.PERMISSION_GRANTED) {
-//                Intent intent = new Intent(context, UkuleleTuner.class);
-//                startActivity(intent);
-//            } else {
-//                requestMicPermission();
-//                Toast.makeText(MainActivity.this,"You must grant this permission!",
-//                        Toast.LENGTH_LONG).show();
-//            }
-//        });
 }
 
 //    #### need to update strings for messages
@@ -75,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
                 Manifest.permission.RECORD_AUDIO)) {
             new AlertDialog.Builder(this)
                     .setTitle("Permission needed")
-                    .setMessage("This permission is needed because of this and that")
+                    .setMessage("This permission is needed because the tuner needs access to the microphone")
                     .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
