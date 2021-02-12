@@ -16,8 +16,8 @@
         <activity android:name=".information" />
         <activity android:name=".UkuleleTuner" />
         <activity android:name=".GuitarTunerExpert" />
-        <activity android:name=".LoginPage" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"/>
+        <activity android:name=".LoginPage" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

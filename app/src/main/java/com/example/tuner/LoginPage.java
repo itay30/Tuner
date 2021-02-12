@@ -31,7 +31,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
 public class LoginPage extends AppCompatActivity implements View.OnClickListener {
-    private static final String TAG = "SampleSignIn";
+    private static final String TAG = "TunerSignIn";
     private GoogleSignInClient mGoogleSignInClient;
     private static final int RC_SIGN_IN = 9001;
     private FirebaseAuth mAuth;
@@ -42,25 +42,29 @@ public class LoginPage extends AppCompatActivity implements View.OnClickListener
         setContentView(R.layout.activity_login_page);
 
         findViewById(R.id.sign_in_button).setOnClickListener(this);
-        final ImageButton backtomain = findViewById(R.id.backtomain);
         final Context context = this;
 
         mAuth = FirebaseAuth.getInstance();
 
 
-        backtomain.setOnClickListener(v -> {
-            Intent intent = new Intent(context, MainActivity.class);
-            startActivity(intent);
-        });
-
         // Configure sign-in to request the user's ID, email address, and basic
         // profile. ID and basic profile are included in DEFAULT_SIGN_IN.
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
                 .build();
 
         // Build a GoogleSignInClient with the options specified by gso.
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        // Check if user is signed in (non-null) and update UI accordingly.
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if (currentUser != null)
+            updateUI(currentUser);
     }
 
     @Override
@@ -126,8 +130,4 @@ public class LoginPage extends AppCompatActivity implements View.OnClickListener
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
-<<<<<<< HEAD
-
-=======
->>>>>>> parent of 7045264 (deleted LoginPage.java and activity_login_page.xml)
 }
