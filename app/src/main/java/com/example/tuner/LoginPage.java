@@ -126,5 +126,8 @@ public class LoginPage extends AppCompatActivity implements View.OnClickListener
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> parent of 7045264 (deleted LoginPage.java and activity_login_page.xml)
 }

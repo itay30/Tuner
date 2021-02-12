@@ -24,10 +24,18 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+<<<<<<< HEAD
         final ImageButton googlebtn = findViewById(R.id.googlebtn);
         final ImageButton info = findViewById(R.id.info);
         final ImageButton guitarTuner = findViewById(R.id.GuitarTuner);
         final Context context = this;
+=======
+        findViewById(R.id.sign_in_button).setOnClickListener(v ->{ signIn(); });
+        final ImageButton info = findViewById(R.id.info);
+        final ImageButton guitarTuner = findViewById(R.id.GuitarTuner);
+        final Context context = this;
+        mAuth = FirebaseAuth.getInstance();
+>>>>>>> parent of 7045264 (deleted LoginPage.java and activity_login_page.xml)
 
         if (ContextCompat.checkSelfPermission(MainActivity.this,
                 Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
@@ -42,10 +50,16 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+<<<<<<< HEAD
         googlebtn.setOnClickListener(v ->{
                 Intent intent = new Intent(context, LoginPage.class);
                 startActivity(intent);
             });
+=======
+//        sign_in_button.setOnClickListener(v ->{
+//            signIn();
+//        });
+>>>>>>> parent of 7045264 (deleted LoginPage.java and activity_login_page.xml)
 
 
 
@@ -61,6 +75,73 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 }
+<<<<<<< HEAD
+=======
+//    @Override
+//    public void onClick(View v) {
+//        switch (v.getId()) {
+//            case R.id.sign_in_button:
+//                signIn();
+//                break;
+//            // ...
+//        }
+//    }
+    private void signIn() {
+        Intent signInIntent = mGoogleSignInClient.getSignInIntent();
+        startActivityForResult(signInIntent, RC_SIGN_IN);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
+        if (requestCode == RC_SIGN_IN) {
+            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+            try {
+                // Google Sign In was successful, authenticate with Firebase
+                GoogleSignInAccount account = task.getResult(ApiException.class);
+                Log.d(TAG, "firebaseAuthWithGoogle:" + account.getId());
+                firebaseAuthWithGoogle(account.getIdToken());
+            } catch (ApiException e) {
+                // Google Sign In failed, update UI appropriately
+                Log.w(TAG, "Google sign in failed", e);
+                // ...
+            }
+        }
+    }
+
+    private void firebaseAuthWithGoogle(String idToken) {
+        AuthCredential credential = GoogleAuthProvider.getCredential(idToken, null);
+        mAuth.signInWithCredential(credential)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            // Sign in success, update UI with the signed-in user's information
+                            Log.d(TAG, "signInWithCredential:success");
+                            FirebaseUser user = mAuth.getCurrentUser();
+                            updateUI(user);
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Log.w(TAG, "signInWithCredential:failure", task.getException());
+                            Toast.makeText(MainActivity.this, "Login Failed!",
+                                    Toast.LENGTH_SHORT).show();
+                        }
+
+                        // ...
+                    }
+                });
+    }
+
+    private void updateUI(FirebaseUser user) {
+        Toast.makeText(MainActivity.this, "Welcome " + user.getDisplayName(),
+                Toast.LENGTH_LONG).show();
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
+>>>>>>> parent of 7045264 (deleted LoginPage.java and activity_login_page.xml)
 
 //    #### need to update strings for messages
     private void requestMicPermission() {
