@@ -1,29 +1,26 @@
 package com.example.tuner;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
-
-import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.ImageButton;
+import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.Switch;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
-import com.google.android.gms.common.api.GoogleApi;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -35,16 +32,43 @@ public class LoginPage extends AppCompatActivity implements View.OnClickListener
     private GoogleSignInClient mGoogleSignInClient;
     private static final int RC_SIGN_IN = 9001;
     private FirebaseAuth mAuth;
+    private MediaPlayer ring;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_page);
 
+        final Switch mute = findViewById(R.id.mutebtn);
+        final Button ContinueToMain = findViewById(R.id.continue_to_main);
         findViewById(R.id.sign_in_button).setOnClickListener(this);
         final Context context = this;
 
         mAuth = FirebaseAuth.getInstance();
+
+        startService(new Intent(getApplicationContext(), MyService.class));
+        ring = MediaPlayer.create(LoginPage.this, R.raw.music);
+        ring.start();
+
+        ContinueToMain.setOnClickListener(v ->{
+            stopMediaPlayer();
+            Intent intent = new Intent(context, MainActivity.class);
+            startActivity(intent);
+        });
+
+        mute.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    mute.setText("Play");
+                    stopMediaPlayer();
+                } else {
+                    startService(new Intent(getApplicationContext(), MyService.class));
+                    ring = MediaPlayer.create(LoginPage.this, R.raw.music);
+                    ring.start();
+                    mute.setText("Stop");
+                }
+            }
+        });
 
 
         // Configure sign-in to request the user's ID, email address, and basic
@@ -63,8 +87,10 @@ public class LoginPage extends AppCompatActivity implements View.OnClickListener
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        if (currentUser != null)
+        if (currentUser != null) {
             updateUI(currentUser);
+            stopMediaPlayer();
+        }
     }
 
     @Override
@@ -72,6 +98,7 @@ public class LoginPage extends AppCompatActivity implements View.OnClickListener
         switch (v.getId()) {
             case R.id.sign_in_button:
                 signIn();
+                stopMediaPlayer();
                 break;
             // ...
         }
@@ -130,4 +157,30 @@ public class LoginPage extends AppCompatActivity implements View.OnClickListener
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
+
+    public static void signOut() {
+        FirebaseAuth.getInstance().signOut();
+    }
+
+    //stops the music
+    public void stopMediaPlayer() {
+        try {
+            if (ring != null) {
+                if (ring.isPlaying())
+                    ring.stop();
+                ring.release();
+                ring = null;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        stopMediaPlayer();
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
 }
