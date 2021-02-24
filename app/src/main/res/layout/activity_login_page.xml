@@ -2,10 +2,11 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/musicSwitch"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginPage"
-    android:background="@drawable/appbackground">
+    android:background="@drawable/appbackground"
+    tools:context=".LoginPage">
 
 
     <LinearLayout
@@ -17,8 +18,10 @@
         <Switch
             android:id="@+id/mutebtn"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Stop" />
+            android:layout_height="50dp"
+            android:layout_marginLeft="5dp"
+            android:checked="true"
+            android:text="Music" />
 
     </LinearLayout>
 
@@ -35,35 +38,50 @@
             android:layout_marginTop="60dp"
             android:gravity="center"
             android:text="@string/title1"
-            android:textSize="50sp" />
+            android:textColor="@color/white"
+            android:textSize="50sp"
+            android:textStyle="bold"/>
 
         <TextView
             android:id="@+id/infotext1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
             android:layout_marginLeft="10dp"
+            android:layout_marginTop="40dp"
             android:text="@string/information"
-            android:textSize="30sp" />
+            android:textSize="29sp" />
 
         <com.google.android.gms.common.SignInButton
             android:id="@+id/sign_in_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="150dp"
-            app:buttonSize="wide"
-            />
-
-        <Button
-            android:id="@+id/continue_to_main"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="70dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="130dp"
+            android:layout_marginLeft="7dp"
+            android:layout_marginRight="7dp"
+            app:buttonSize="wide" />
+
+        <Button
+            android:id="@+id/email_sign_in"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
+            android:layout_marginTop="12dp"
             android:layout_marginRight="10dp"
             android:background="@drawable/rounded_corners"
-            android:text="continue as a guest" />
+            android:text="Sign in" />
+
+        <Button
+            android:id="@+id/continue_as_guest"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/rounded_corners"
+            android:text="Continue as guest" />
+
+
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

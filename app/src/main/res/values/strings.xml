@@ -1,14 +1,9 @@
 <resources>
     <string name="app_name">Tuner</string>
-    <string name="possibleString">A</string>
-    <string name="possibleHertz">123</string>
-    <string name="hz">Hz</string>
-    <string name="suggestion">Perfect!</string>
     <string name="title1">Mazor Tuner</string>
-    <string name="title6">Click the button to start tuning</string>
-    <string name="guitar_tuner">Click on the leftmost button to access the guitar tuner</string>
-    <string name="ukulele_tuner">Click on the rightmost button to access the violin tuner</string>
+    <string name="welcome">Welcome</string>
+    <string name="title6">Click to start tuning</string>
+    <string name="guitar_tuner">Click the button to access the guitar tuner</string>
     <string name="instruction1">Guitar Tuner</string>
-    <string name="instruction2">Ukulele Tuner</string>
     <string name="information">*If the tuner doesnt work please make sure that you have enabled microphone access</string>
 </resources>

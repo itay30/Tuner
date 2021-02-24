@@ -34,13 +34,6 @@ class NearestNoteBass {
     }
     public double hertz;
     public char note;
-
-    @Override
-    public String toString() {
-        if (hertz == -1)
-            return " ";
-        return  "" + note + "\n" + hertz + " Hz";
-    }
 }
 
 public class BassTuner extends AppCompatActivity {
@@ -78,10 +71,7 @@ public class BassTuner extends AppCompatActivity {
                             double diff = (inputHertz - nearestNote.hertz);
                             expected_note_bass.setText("" + nearestNote.note);
                             tuner_diff_bass.setText("" + String.format("%.0f", diff));
-                            if (diff >= 0 && diff < 0.5) {
-                                tuner_diff_bass.setText("0");
-                                tuner_diff_bass.setTextColor(Color.GREEN);
-                            } else if (diff > -0.5 && diff <= 0) {
+                            if (Math.abs(diff) <= 0.5) {
                                 tuner_diff_bass.setText("0");
                                 tuner_diff_bass.setTextColor(Color.GREEN);
                             } else if (diff >= -2 && diff < -0.5) {
@@ -132,6 +122,7 @@ public class BassTuner extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu, menu);
         return true;
     }
+
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -146,7 +137,7 @@ public class BassTuner extends AppCompatActivity {
             Intent intent = new Intent(context, UkuleleTuner.class);
             BassTuner.this.startActivity(intent);}
         else if (itemID == R.id.switch_bass){
-            Toast.makeText(context,"you are allready in this mode", Toast.LENGTH_SHORT).show();}
+            Toast.makeText(context,"you are already in this mode", Toast.LENGTH_SHORT).show();}
         else if (itemID == R.id.switch_general){
             Intent intent = new Intent(context, GeneralTuner.class);
             BassTuner.this.startActivity(intent);}

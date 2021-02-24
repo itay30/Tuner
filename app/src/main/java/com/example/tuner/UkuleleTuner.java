@@ -1,10 +1,7 @@
 package com.example.tuner;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.annotation.RequiresApi;
-import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -12,11 +9,14 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.PopupMenu;
 import android.widget.TextView;
-import android.content.Context;
+import android.widget.Toast;
+
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
+
 import be.tarsos.dsp.AudioDispatcher;
 import be.tarsos.dsp.AudioEvent;
 import be.tarsos.dsp.AudioProcessor;
@@ -24,7 +24,6 @@ import be.tarsos.dsp.io.android.AudioDispatcherFactory;
 import be.tarsos.dsp.pitch.PitchDetectionHandler;
 import be.tarsos.dsp.pitch.PitchDetectionResult;
 import be.tarsos.dsp.pitch.PitchProcessor;
-import android.widget.Toast;
 
 
 class NearestNoteUkulele {
@@ -34,13 +33,6 @@ class NearestNoteUkulele {
     }
     public double hertz;
     public char note;
-
-    @Override
-    public String toString() {
-        if (hertz == -1)
-            return " ";
-        return  "" + note + "\n" + hertz + " Hz";
-    }
 }
 
 public class UkuleleTuner extends AppCompatActivity {
@@ -78,10 +70,7 @@ public class UkuleleTuner extends AppCompatActivity {
                             double diff = (inputHertz - nearestNote.hertz);
                             expected_note_ukulele.setText("" + nearestNote.note);
                             tuner_diff_ukulele.setText("" + String.format("%.0f", diff));
-                            if (diff >= 0 && diff < 0.5) {
-                                tuner_diff_ukulele.setText("0");
-                                tuner_diff_ukulele.setTextColor(Color.GREEN);
-                            } else if (diff > -0.5 && diff <= 0) {
+                            if (Math.abs(diff) <= 0.5) {
                                 tuner_diff_ukulele.setText("0");
                                 tuner_diff_ukulele.setTextColor(Color.GREEN);
                             } else if (diff >= -2 && diff < -0.5) {
@@ -132,6 +121,7 @@ public class UkuleleTuner extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu, menu);
         return true;
     }
+
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -143,7 +133,7 @@ public class UkuleleTuner extends AppCompatActivity {
             Intent intent = new Intent(context, GuitarTunerExpert.class);
                 UkuleleTuner.this.startActivity(intent);}
         else if (itemID == R.id.switch_ukulele){
-            Toast.makeText(context,"you are allready in this mode", Toast.LENGTH_SHORT).show();}
+            Toast.makeText(context,"you are already in this mode", Toast.LENGTH_SHORT).show();}
         else if (itemID == R.id.switch_bass){
             Intent intent = new Intent(context, BassTuner.class);
                 UkuleleTuner.this.startActivity(intent);}

@@ -5,14 +5,14 @@
             android:id="@+id/switch_begginer"
             android:layout_height="wrap_content"
             android:orderInCategory="100"
-            android:title="Begginer"
+            android:title="Guitar"
             />
 
         <item
             android:id="@+id/switch_expert"
             android:layout_height="wrap_content"
             android:orderInCategory="100"
-            android:title="Expert"
+            android:title="Guitar Expert"
             />
 
         <item

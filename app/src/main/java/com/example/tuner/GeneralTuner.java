@@ -1,13 +1,10 @@
 package com.example.tuner;
 
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -17,9 +14,13 @@ import android.widget.ImageButton;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
-import java.lang.Math;
+
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
+
 import java.util.HashMap;
 import java.util.Map;
+
 import be.tarsos.dsp.AudioDispatcher;
 import be.tarsos.dsp.AudioEvent;
 import be.tarsos.dsp.AudioProcessor;
@@ -115,6 +116,7 @@ class Note
         return this._note + this._octave + " " + "(" + String.format("%.1f",this._exact_frequency) + ")";
     }
 }
+
 public class GeneralTuner extends AppCompatActivity {
 
     @Override
@@ -153,10 +155,7 @@ public class GeneralTuner extends AppCompatActivity {
                             double diff = (inputHertz - note.getExactFrequency());
                             expected_note_general.setText("" +note.toString());
                             tuner_diff_general.setText("" + String.format("%.0f", diff));
-                            if (diff >= 0 && diff < 0.5) {
-                                tuner_diff_general.setText("0");
-                                tuner_diff_general.setTextColor(Color.GREEN);
-                            } else if (diff > -0.5 && diff <= 0) {
+                            if (Math.abs(diff) <= 0.5) {
                                 tuner_diff_general.setText("0");
                                 tuner_diff_general.setTextColor(Color.GREEN);
                             } else if (diff >= -2 && diff < -0.5) {
@@ -193,6 +192,7 @@ public class GeneralTuner extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu, menu);
         return true;
     }
+
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -210,9 +210,10 @@ public class GeneralTuner extends AppCompatActivity {
             Intent intent = new Intent(context, BassTuner.class);
             GeneralTuner.this.startActivity(intent);}
         else if (itemID == R.id.switch_general){
-            Toast.makeText(context,"you are allready in this mode", Toast.LENGTH_SHORT).show(); }
+            Toast.makeText(context,"you are already in this mode", Toast.LENGTH_SHORT).show(); }
         return super.onOptionsItemSelected(item);
     }
+
     public void showPopup(View v) {
         PopupMenu popup = new PopupMenu(this, v);
         MenuInflater inflater = popup.getMenuInflater();
@@ -220,4 +221,4 @@ public class GeneralTuner extends AppCompatActivity {
         popup.show();
         popup.setOnMenuItemClickListener(this::onOptionsItemSelected);
     }
-    }
+}

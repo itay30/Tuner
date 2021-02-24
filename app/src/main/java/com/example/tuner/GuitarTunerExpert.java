@@ -1,10 +1,7 @@
 package com.example.tuner;
 
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
-import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -16,7 +13,11 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.PopupMenu;
 import android.widget.TextView;
-import android.content.Context;
+import android.widget.Toast;
+
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
+
 import be.tarsos.dsp.AudioDispatcher;
 import be.tarsos.dsp.AudioEvent;
 import be.tarsos.dsp.AudioProcessor;
@@ -24,7 +25,6 @@ import be.tarsos.dsp.io.android.AudioDispatcherFactory;
 import be.tarsos.dsp.pitch.PitchDetectionHandler;
 import be.tarsos.dsp.pitch.PitchDetectionResult;
 import be.tarsos.dsp.pitch.PitchProcessor;
-import android.widget.Toast;
 
 
 class NearestNoteExpert {
@@ -34,13 +34,6 @@ class NearestNoteExpert {
     }
     public double hertz;
     public char note;
-
-    @Override
-    public String toString() {
-        if (hertz == -1)
-            return " ";
-        return  "" + note + "(" + hertz + ")" + " Hz";
-    }
 }
 
 public class GuitarTunerExpert extends AppCompatActivity {
@@ -82,10 +75,7 @@ public class GuitarTunerExpert extends AppCompatActivity {
                             expected_note_expert.setText("" + nearestNote.note);
                             expected_note_hertz_expert.setText("(" + nearestNote.hertz + ")" + "Hz");
                             tuner_diff_expert.setText("" + String.format("%.0f", diff));
-                            if (diff >= 0 && diff < 0.3) {
-                                tuner_diff_expert.setText("0");
-                                tuner_diff_expert.setTextColor(Color.GREEN);
-                            } else if (diff > -0.3 && diff <= 0) {
+                            if (Math.abs(diff) <= 0.3) {
                                 tuner_diff_expert.setText("0");
                                 tuner_diff_expert.setTextColor(Color.GREEN);
                             } else if (diff >= -2 && diff < -0.3) {
@@ -142,6 +132,7 @@ public class GuitarTunerExpert extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu, menu);
         return true;
     }
+
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -150,7 +141,7 @@ public class GuitarTunerExpert extends AppCompatActivity {
             Intent intent = new Intent(context, GuitarTuner.class);
                 GuitarTunerExpert.this.startActivity(intent);}
         else if (itemID == R.id.switch_expert){
-            Toast.makeText(context,"you are allready in this mode", Toast.LENGTH_SHORT).show(); }
+            Toast.makeText(context,"you are already in this mode", Toast.LENGTH_SHORT).show(); }
         else if (itemID == R.id.switch_ukulele){
             Intent intent = new Intent(context, UkuleleTuner.class);
                 GuitarTunerExpert.this.startActivity(intent);}

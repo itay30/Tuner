@@ -1,7 +1,5 @@
 package com.example.tuner;
 
-
-
 import android.content.Intent;
 import androidx.annotation.RequiresApi;
 import android.graphics.Color;
@@ -11,7 +9,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.PopupMenu;
 import android.widget.TextView;
@@ -32,26 +29,18 @@ class NearestNote {
     }
     public double hertz;
     public char note;
-
-    @Override
-    public String toString() {
-        if (hertz == -1)
-            return " ";
-        return  "" + note + "\n" + hertz + " Hz";
-    }
 }
 
 public class GuitarTuner extends MainActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.guitar_tuner);
+        setContentView(R.layout.activity_guitar_tuner);
 
         //Initializes the microphone for user input and text boxes for output on screen
         AudioDispatcher dispatcher = AudioDispatcherFactory.fromDefaultMicrophone(22050, 1024, 0);
         final TextView expected_note = findViewById(R.id.expected_note);
         final TextView tuner_diff = findViewById(R.id.tuner_diff);
-        final Button choosebtn = findViewById(R.id.btnShow);
         final ImageButton backtomain = findViewById(R.id.backtomain);
 
         backtomain.setOnClickListener(v -> {
@@ -75,10 +64,7 @@ public class GuitarTuner extends MainActivity {
                             double diff = (inputHertz - nearestNote.hertz);
                             expected_note.setText("" + nearestNote.note);
                             tuner_diff.setText("" + String.format("%.0f", diff));
-                            if (diff >= 0 && diff < 0.3) {
-                                tuner_diff.setText("0");
-                                tuner_diff.setTextColor(Color.GREEN);
-                            } else if (diff > -0.3 && diff <= 0) {
+                            if (Math.abs(diff) <= 0.3) {
                                 tuner_diff.setText("0");
                                 tuner_diff.setTextColor(Color.GREEN);
                             } else if (diff >= -2 && diff < -0.3) {
@@ -139,7 +125,7 @@ public class GuitarTuner extends MainActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int itemID = item.getItemId();
         if (itemID == R.id.switch_begginer)
-            Toast.makeText(context,"you are allready in this mode", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context,"you are already in this mode", Toast.LENGTH_SHORT).show();
         else if (itemID == R.id.switch_expert){
                 Intent intent = new Intent(context, GuitarTunerExpert.class);
                     GuitarTuner.this.startActivity(intent);}

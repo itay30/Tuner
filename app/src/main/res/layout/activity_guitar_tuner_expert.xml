@@ -21,14 +21,14 @@
             android:layout_marginLeft="7dp"
             android:layout_marginTop="7dp"
             android:onClick="showPopup"
-            android:text="Expert"
+            android:text="Guitar Expert"
             android:background="@drawable/rounded_corners"/>
 
         <ImageButton
             android:id="@+id/backtomain"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="205dp"
+            android:layout_marginLeft="197dp"
             android:background="@null"
             app:srcCompat="@drawable/backiconwhite" />
 
@@ -46,7 +46,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="expected note"
+        android:text=""
         android:textColor="#FFFFFF"
         android:textSize="60sp" />
 
@@ -55,7 +55,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="120 Hz"
+            android:text=""
             android:textColor="#FFFFFF"
             android:textSize="40sp" />
 
@@ -65,7 +65,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:layout_marginTop="120dp"
-        android:text="tuner diff"
+        android:text=""
         android:textColor="#FFFFFF"
         android:textSize="40sp" />
 
@@ -75,7 +75,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:layout_marginTop="120dp"
-            android:text="current hertz"
+            android:text=""
             android:textColor="#FFFFFF"
             android:textSize="40sp" />
 

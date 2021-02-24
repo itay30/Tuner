@@ -31,7 +31,7 @@ public class LoginPage extends AppCompatActivity implements View.OnClickListener
     private static final String TAG = "TunerSignIn";
     private GoogleSignInClient mGoogleSignInClient;
     private static final int RC_SIGN_IN = 9001;
-    private FirebaseAuth mAuth;
+    private FirebaseAuth fAuth;
     private MediaPlayer ring;
     
     @Override
@@ -40,17 +40,24 @@ public class LoginPage extends AppCompatActivity implements View.OnClickListener
         setContentView(R.layout.activity_login_page);
 
         final Switch mute = findViewById(R.id.mutebtn);
-        final Button ContinueToMain = findViewById(R.id.continue_to_main);
+        final Button EmailSignIn = findViewById(R.id.email_sign_in);
+        final Button ContinueAsGuest = findViewById(R.id.continue_as_guest);
         findViewById(R.id.sign_in_button).setOnClickListener(this);
         final Context context = this;
 
-        mAuth = FirebaseAuth.getInstance();
+        fAuth = FirebaseAuth.getInstance();
 
         startService(new Intent(getApplicationContext(), MyService.class));
         ring = MediaPlayer.create(LoginPage.this, R.raw.music);
         ring.start();
 
-        ContinueToMain.setOnClickListener(v ->{
+        EmailSignIn.setOnClickListener(v ->{
+            stopMediaPlayer();
+            Intent intent = new Intent(context, HandleLogin.class);
+            startActivity(intent);
+        });
+
+        ContinueAsGuest.setOnClickListener(v ->{
             stopMediaPlayer();
             Intent intent = new Intent(context, MainActivity.class);
             startActivity(intent);
@@ -58,14 +65,12 @@ public class LoginPage extends AppCompatActivity implements View.OnClickListener
 
         mute.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    mute.setText("Play");
+                if (!isChecked) {
                     stopMediaPlayer();
                 } else {
                     startService(new Intent(getApplicationContext(), MyService.class));
                     ring = MediaPlayer.create(LoginPage.this, R.raw.music);
                     ring.start();
-                    mute.setText("Stop");
                 }
             }
         });
@@ -86,9 +91,9 @@ public class LoginPage extends AppCompatActivity implements View.OnClickListener
     public void onStart() {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
-        FirebaseUser currentUser = mAuth.getCurrentUser();
+        FirebaseUser currentUser = fAuth.getCurrentUser();
         if (currentUser != null) {
-            updateUI(currentUser);
+            updateUI();
             stopMediaPlayer();
         }
     }
@@ -100,7 +105,6 @@ public class LoginPage extends AppCompatActivity implements View.OnClickListener
                 signIn();
                 stopMediaPlayer();
                 break;
-            // ...
         }
     }
     private void signIn() {
@@ -123,43 +127,35 @@ public class LoginPage extends AppCompatActivity implements View.OnClickListener
             } catch (ApiException e) {
                 // Google Sign In failed, update UI appropriately
                 Log.w(TAG, "Google sign in failed", e);
-                // ...
             }
         }
     }
 
     private void firebaseAuthWithGoogle(String idToken) {
         AuthCredential credential = GoogleAuthProvider.getCredential(idToken, null);
-        mAuth.signInWithCredential(credential)
+        fAuth.signInWithCredential(credential)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "signInWithCredential:success");
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            updateUI(user);
+                            updateUI();
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithCredential:failure", task.getException());
                             Toast.makeText(LoginPage.this, "Login Failed!",
                                     Toast.LENGTH_SHORT).show();
                         }
-
-                        // ...
                     }
                 });
     }
 
-    private void updateUI(FirebaseUser user) {
-        Toast.makeText(LoginPage.this, "Welcome " + user.getDisplayName(),
+    private void updateUI() {
+        Toast.makeText(LoginPage.this, "Sign in successfully ",
                 Toast.LENGTH_LONG).show();
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
-    }
-
-    public static void signOut() {
-        FirebaseAuth.getInstance().signOut();
     }
 
     //stops the music
