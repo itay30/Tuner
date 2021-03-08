@@ -4,6 +4,7 @@ import android.Manifest;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.widget.ImageButton;
@@ -19,6 +20,7 @@ import androidx.core.content.ContextCompat;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity {
+    private BroadcastReceivers myReceiver = new BroadcastReceivers();
     private int MIC_PERMISSION_CODE = 1;
     private FirebaseAuth fAuth;
 
@@ -29,11 +31,11 @@ public class MainActivity extends AppCompatActivity {
 
         fAuth = FirebaseAuth.getInstance();
 
+        setBroadcastReceiver();
+
         TextView welcomeTitle = findViewById(R.id.welcome_txt);
         if(fAuth.getCurrentUser() != null)
-            welcomeTitle.setText(getString(R.string.welcome) + " " + fAuth.getCurrentUser().getDisplayName());
-        else{
-            welcomeTitle.setText(getString(R.string.title1));}
+            welcomeTitle.setText("Welcome " + fAuth.getCurrentUser().getDisplayName());
 
         final ImageButton signOutBtn = findViewById(R.id.sign_out_button);
         final ImageButton guitarTuner = findViewById(R.id.GuitarTuner);
@@ -84,6 +86,16 @@ public class MainActivity extends AppCompatActivity {
                         Toast.LENGTH_LONG).show();
             }
         });
+    }
+
+    private void setBroadcastReceiver() {
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(Intent.ACTION_POWER_DISCONNECTED);
+        filter.addAction(Intent.ACTION_POWER_CONNECTED);
+        filter.addAction(Intent.ACTION_BATTERY_LOW);
+        filter.addAction(Intent.ACTION_HEADSET_PLUG);
+        // Register the receiver using the activity context.
+        this.registerReceiver(myReceiver, filter);
     }
 
     private void requestMicPermission() {

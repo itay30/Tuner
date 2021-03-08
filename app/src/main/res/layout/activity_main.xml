@@ -54,7 +54,7 @@
             android:layout_marginBottom="200dp"
             android:fontFamily="sans-serif-condensed"
             android:gravity="center"
-            android:text="@string/welcome"
+            android:text="@string/title1"
             android:textColor="#FFFFFF"
             android:textSize="38sp"
             android:textStyle="bold" />

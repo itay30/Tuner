@@ -100,14 +100,6 @@ class Note
             this._setExactFrequency();
         }
 
-    public String getNote() {
-        return this._note;
-    }
-
-    public int getOctave() {
-        return this._octave;
-    }
-
     public double getExactFrequency() {
         return this._exact_frequency;
     }

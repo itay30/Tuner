@@ -1,7 +1,6 @@
 <resources>
     <string name="app_name">Tuner</string>
     <string name="title1">Mazor Tuner</string>
-    <string name="welcome">Welcome</string>
     <string name="title6">Click to start tuning</string>
     <string name="guitar_tuner">Click the button to access the guitar tuner</string>
     <string name="instruction1">Guitar Tuner</string>
