@@ -152,7 +152,7 @@ public class LoginPage extends AppCompatActivity implements View.OnClickListener
     }
 
     private void updateUI() {
-        Toast.makeText(LoginPage.this, "Sign in successfully ",
+        Toast.makeText(LoginPage.this, "Signed in successfully ",
                 Toast.LENGTH_LONG).show();
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
