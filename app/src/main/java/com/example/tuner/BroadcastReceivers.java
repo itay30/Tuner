@@ -27,9 +27,6 @@ public class BroadcastReceivers extends BroadcastReceiver {
                     toastMessage = "Battery percentage low!";
                     simpleAlert(context, toastMessage);
                     break;
-                case Intent.ACTION_HEADSET_PLUG:
-                    toastMessage = "audio is plugged or unplugged from the device!";
-                    break;
             }
             if(!toastMessage.isEmpty())
             Toast.makeText(context, toastMessage, Toast.LENGTH_SHORT).show();

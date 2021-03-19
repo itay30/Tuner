@@ -93,7 +93,6 @@ public class MainActivity extends AppCompatActivity {
         filter.addAction(Intent.ACTION_POWER_DISCONNECTED);
         filter.addAction(Intent.ACTION_POWER_CONNECTED);
         filter.addAction(Intent.ACTION_BATTERY_LOW);
-        filter.addAction(Intent.ACTION_HEADSET_PLUG);
         // Register the receiver using the activity context.
         this.registerReceiver(myReceiver, filter);
     }
