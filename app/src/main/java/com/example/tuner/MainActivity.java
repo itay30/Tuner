@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,27 +20,28 @@ import androidx.core.content.ContextCompat;
 
 import com.google.firebase.auth.FirebaseAuth;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private BroadcastReceivers myReceiver = new BroadcastReceivers();
     private int MIC_PERMISSION_CODE = 1;
     private FirebaseAuth fAuth;
+    private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        fAuth = FirebaseAuth.getInstance();
+        final ImageButton signOutBtn = findViewById(R.id.sign_out_button);
+        final ImageButton guitarTuner = findViewById(R.id.GuitarTuner);
 
-        setBroadcastReceiver();
+        fAuth = FirebaseAuth.getInstance();
+        context = this;
 
         TextView welcomeTitle = findViewById(R.id.welcome_txt);
         if(fAuth.getCurrentUser() != null)
             welcomeTitle.setText("Welcome " + fAuth.getCurrentUser().getDisplayName());
 
-        final ImageButton signOutBtn = findViewById(R.id.sign_out_button);
-        final ImageButton guitarTuner = findViewById(R.id.GuitarTuner);
-        final Context context = this;
+        setBroadcastReceiver();
 
         if (ContextCompat.checkSelfPermission(MainActivity.this,
                 Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
@@ -48,44 +50,9 @@ public class MainActivity extends AppCompatActivity {
             requestMicPermission();
         }
 
-        signOutBtn.setOnClickListener(v ->{
-            new AlertDialog.Builder(this)
-                    .setTitle("Sign out")
-                    .setMessage("Do you want to logout from this app?")
-                    .setPositiveButton("yes", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            if(fAuth.getCurrentUser() != null) {
-                                Toast.makeText(MainActivity.this, "You signed out " + fAuth.getCurrentUser().getDisplayName() ,
-                                        Toast.LENGTH_LONG).show();
-                                fAuth.signOut();
-                                Intent intent = new Intent(context, LoginPage.class);
-                                startActivity(intent);
-                            }
-                            else {
-                                Toast.makeText(MainActivity.this, "There is no users signed in",
-                                        Toast.LENGTH_LONG).show();
-                            }
-                        }
-                    })
-                    .setNegativeButton("no", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) { dialog.dismiss(); }
-                    })
-                    .create().show();
-        });
+        signOutBtn.setOnClickListener(this);
+        guitarTuner.setOnClickListener(this);
 
-        guitarTuner.setOnClickListener(v -> {
-            if (ContextCompat.checkSelfPermission(MainActivity.this,
-                    Manifest.permission.RECORD_AUDIO) == PackageManager.PERMISSION_GRANTED) {
-                Intent intent = new Intent(context, GuitarTuner.class);
-                startActivity(intent);
-            } else {
-                requestMicPermission();
-                Toast.makeText(MainActivity.this,"You must grant this permission!",
-                        Toast.LENGTH_LONG).show();
-            }
-        });
     }
 
     private void setBroadcastReceiver() {
@@ -120,6 +87,54 @@ public class MainActivity extends AppCompatActivity {
         } else {
             ActivityCompat.requestPermissions(this,
                     new String[] {Manifest.permission.RECORD_AUDIO}, MIC_PERMISSION_CODE);
+        }
+    }
+
+    @Override
+    public void onClick(View v) {
+        Intent intent;
+        switch(v.getId()){
+            case R.id.GuitarTuner:
+                if (ContextCompat.checkSelfPermission(MainActivity.this,
+                        Manifest.permission.RECORD_AUDIO) == PackageManager.PERMISSION_GRANTED) {
+                    intent = new Intent(context, GuitarTuner.class);
+                    startActivity(intent);
+                } else {
+                    requestMicPermission();
+                    Toast.makeText(MainActivity.this,"You must grant this permission!",
+                            Toast.LENGTH_LONG).show();
+                }
+                break;
+            case R.id.sign_out_button:
+                new AlertDialog.Builder(this)
+                        .setTitle("Sign out")
+                        .setMessage("Do you want to logout from this app?")
+                        .setPositiveButton("yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                if(fAuth.getCurrentUser() != null) {
+                                    Toast.makeText(MainActivity.this, "You signed out " + fAuth.getCurrentUser().getDisplayName() ,
+                                            Toast.LENGTH_LONG).show();
+                                    fAuth.signOut();
+                                    Intent intent = new Intent(context, LoginPage.class);
+                                    startActivity(intent);
+                                }
+                                else {
+                                    Toast.makeText(MainActivity.this, "There is no users signed in",
+                                            Toast.LENGTH_LONG).show();
+                                }
+                            }
+                        })
+                        .setNegativeButton("no", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) { dialog.dismiss(); }
+                        })
+                        .create().show();
+                break;
+            default:
+                intent = new Intent(context, MainActivity.class);
+                startActivity(intent);
+                break;
         }
     }
 
