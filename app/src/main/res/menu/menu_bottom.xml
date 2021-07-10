@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/guitar"
+        android:title="Guitar"
+        android:icon="@drawable/acoustic_guitar_ic"
+        android:iconTint="@color/white"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/ukulele"
+        android:title="Ukulele"
+        android:icon="@drawable/ukelele_guitar_ic"
+        android:iconTint="@color/white"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/bass"
+        android:title="Bass"
+        android:icon="@drawable/bass_guitar_ic"
+        android:iconTint="@color/white"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/chromatic"
+        android:title="Chromatic"
+        android:icon="@drawable/ic_music_note"
+        app:showAsAction="ifRoom"/>
+</menu>

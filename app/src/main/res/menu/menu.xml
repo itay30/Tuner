@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <item
+        android:id="@+id/switch_begginer"
+        android:layout_height="wrap_content"
+        android:orderInCategory="100"
+        android:title="Guitar"
+        />
+
+
+    <item
+        android:id="@+id/switch_ukulele"
+        android:layout_height="wrap_content"
+        android:orderInCategory="100"
+        android:title="Ukulele"
+        />
+
+    <item
+        android:id="@+id/switch_bass"
+        android:layout_height="wrap_content"
+        android:orderInCategory="100"
+        android:title="Bass"
+        />
+
+    <item
+        android:id="@+id/switch_chromatic"
+        android:layout_height="wrap_content"
+        android:orderInCategory="100"
+        android:title="Chromatic"
+        />
+
+</menu>
