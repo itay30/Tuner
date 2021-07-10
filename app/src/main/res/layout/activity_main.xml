@@ -7,28 +7,6 @@
     android:background="@drawable/appbackground"
     tools:context=".MainActivity">
 
-<!--    <LinearLayout-->
-<!--        android:id="@+id/linearLayout"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="60dp"-->
-<!--        android:gravity="center"-->
-<!--        android:orientation="horizontal"-->
-<!--        app:layout_constraintTop_toTopOf="parent">-->
-
-<!--            <ImageButton-->
-<!--                android:id="@+id/info"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginTop="5dp"-->
-<!--                android:layout_marginEnd="5dp"-->
-<!--                app:srcCompat="@drawable/ic_information"-->
-<!--                android:background="@color/dark_grey"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintTop_toTopOf="parent"-->
-<!--                app:layout_constraintBottom_toTopOf="@id/guideline_start"/>-->
-
-<!--    </LinearLayout>-->
-
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="0dp"
@@ -107,8 +85,6 @@
             android:textColor="#FFFFFF"
             android:textSize="20sp" />
 
-
-
         <ImageButton
             android:id="@+id/GuitarTuner"
             android:layout_width="wrap_content"
@@ -131,31 +107,6 @@
             android:textSize="18sp" />
 
     </LinearLayout>
-
-            <!--            <TextView-->
-            <!--                android:id="@+id/Instruction2"-->
-            <!--                android:layout_width="wrap_content"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:layout_weight="1"-->
-            <!--                android:fontFamily="sans-serif-condensed"-->
-            <!--                android:gravity="center"-->
-            <!--                android:text="@string/instruction2"-->
-            <!--                android:textColor="#FFFFFF"-->
-            <!--                android:textSize="18sp" />-->
-<!--        </LinearLayout>-->
-
-
-<!--    <com.google.android.material.bottomnavigation.BottomNavigationView-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:id="@+id/bottomNav"-->
-<!--        android:background="@color/black"-->
-<!--        app:menu="@menu/menu_bottom"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-
-<!--        app:itemIconTint="@drawable/item_selected"-->
-<!--        app:itemTextColor="@drawable/item_selected"-->
-<!--        />-->
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_start_page"
@@ -205,7 +156,5 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.95" />
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

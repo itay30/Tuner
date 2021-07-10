@@ -246,65 +246,6 @@ public class TuningClass extends AppCompatActivity implements GestureDetector.On
                 }
             };
 
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        getMenuInflater().inflate(R.menu.menu, menu);
-//        return true;
-//    }
-//
-//    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        Fragment fragment;
-//        int itemID = item.getItemId();
-//
-//        if (itemID == R.id.switch_begginer){
-//            TuneCase = "guitar";
-//            fragment = new GuitarFragment();
-//            FragmentManager fm = getSupportFragmentManager();
-//            FragmentTransaction ft = fm.beginTransaction();
-//            ft.replace(R.id.fragment_place, fragment);
-//            ft.commit();}
-////        else if (itemID == R.id.switch_expert){
-////            TuneCase = "guitar expert";
-////            fragment = new GuitarExpertFragment();
-////            FragmentManager fm = getSupportFragmentManager();
-////            FragmentTransaction ft = fm.beginTransaction();
-////            ft.replace(R.id.fragment_place, fragment);
-////            ft.commit();}
-//        else if (itemID == R.id.switch_ukulele){
-//            TuneCase = "ukulele";
-//            fragment = new UkuleleFragment();
-//            FragmentManager fm = getSupportFragmentManager();
-//            FragmentTransaction ft = fm.beginTransaction();
-//            ft.replace(R.id.fragment_place, fragment);
-//            ft.commit();}
-//        else if (itemID == R.id.switch_bass){
-//            TuneCase = "bass";
-//            fragment = new BassFragment();
-//            FragmentManager fm = getSupportFragmentManager();
-//            FragmentTransaction ft = fm.beginTransaction();
-//            ft.replace(R.id.fragment_place, fragment);
-//            ft.commit();}
-//        else if (itemID == R.id.switch_chromatic){
-//            Intent intent = new Intent(context, ChromaticTuningClass.class);
-//            startActivity(intent);
-//        }
-////            fragment = new GeneralFragment();
-////            FragmentManager fm = getSupportFragmentManager();
-////            FragmentTransaction ft = fm.beginTransaction();
-////            ft.replace(R.id.fragment_place, fragment);
-////            ft.commit();}
-//        return super.onOptionsItemSelected(item);
-//    }
-//
-//    public void showPopup(View v) {
-//        PopupMenu popup = new PopupMenu(this, v);
-//        MenuInflater inflater = popup.getMenuInflater();
-//        inflater.inflate(R.menu.menu, popup.getMenu());
-//        popup.show();
-//        popup.setOnMenuItemClickListener(this::onOptionsItemSelected);
-//    }
-
     @Override
     public boolean onFling(MotionEvent downEvent, MotionEvent moveEvent, float velocityX, float velocityY) {
         boolean result = false;
