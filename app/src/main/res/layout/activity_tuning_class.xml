@@ -9,13 +9,13 @@
     android:orientation="vertical">
 
     <ImageButton
-        android:id="@+id/btn_back_to_main"
+        android:id="@+id/btn_info"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
         android:background="@null"
-        app:srcCompat="@drawable/ic_home"
+        app:srcCompat="@drawable/ic_info"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -92,7 +92,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/menu_bottom"
-
+        app:labelVisibilityMode="labeled"
         app:itemIconTint="@drawable/item_selected"
         app:itemTextColor="@drawable/item_selected"/>
 

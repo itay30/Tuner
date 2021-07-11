@@ -49,7 +49,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="355dp"
-                android:text="Loading..."
+                android:text="@string/loading"
                 android:textColor="@android:color/white"
                 android:textSize="30sp" />
 

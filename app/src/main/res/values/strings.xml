@@ -4,6 +4,11 @@
     <string name="title6">Click to start tuning</string>
     <string name="guitar_tuner">Click the button to access the guitar tuner</string>
     <string name="instruction1">Guitar Tuner</string>
-    <string name="information">*if you are not hitting a complete 0 while you are tuning and it goes back and forth between 0 to 1 or 0 to -1 its ok and your instrument will be tuned
-    </string>
+    <string name="information">*if you are not hitting a complete 0 while you are tuning and it goes back and forth between 0 to 1 or 0 to -1 its ok and your instrument will be tuned</string>
+    <string name="guitar">Guitar</string>
+    <string name="ukulele">Ukulele</string>
+    <string name="bass">Bass</string>
+    <string name="chromatic">Chromatic</string>
+    <string name="loading">Loading...</string>
+    <string name="language">Language</string>
 </resources>

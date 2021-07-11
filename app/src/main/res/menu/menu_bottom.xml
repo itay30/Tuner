@@ -4,28 +4,28 @@
 
     <item
         android:id="@+id/guitar"
-        android:title="Guitar"
+        android:title="@string/guitar"
         android:icon="@drawable/acoustic_guitar_ic"
         android:iconTint="@color/white"
         app:showAsAction="ifRoom"/>
 
     <item
         android:id="@+id/ukulele"
-        android:title="Ukulele"
+        android:title="@string/ukulele"
         android:icon="@drawable/ukelele_guitar_ic"
         android:iconTint="@color/white"
         app:showAsAction="ifRoom"/>
 
     <item
         android:id="@+id/bass"
-        android:title="Bass"
+        android:title="@string/bass"
         android:icon="@drawable/bass_guitar_ic"
         android:iconTint="@color/white"
         app:showAsAction="ifRoom"/>
 
     <item
         android:id="@+id/chromatic"
-        android:title="Chromatic"
+        android:title="@string/chromatic"
         android:icon="@drawable/ic_music_note"
         app:showAsAction="ifRoom"/>
 </menu>

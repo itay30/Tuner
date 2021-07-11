@@ -52,12 +52,12 @@ public class TuningClass extends AppCompatActivity implements GestureDetector.On
         final TextView current_hertz_small = findViewById(R.id.current_hertz_small);
         final TextView expected_note = findViewById(R.id.expected_note);
         final TextView tuner_diff = findViewById(R.id.tuner_diff);
-        final ImageButton back_to_main = findViewById(R.id.btn_back_to_main);
+        final ImageButton btn_info = findViewById(R.id.btn_info);
 
         bottomNavigationView = findViewById(R.id.bottomNav);
         bottomNavigationView.setOnNavigationItemSelectedListener(bottomNavMethod);
 
-        back_to_main.setOnClickListener(v -> {
+        btn_info.setOnClickListener(v -> {
             Intent intent = new Intent(context, MainActivity.class);
             startActivity(intent);
         });
