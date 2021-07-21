@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">טיונר</string>
+    <string name="title1">מזור טיונר</string>
+    <string name="title6">לחץ להתחיל לכוון</string>
+    <string name="guitar_tuner">לחץ על הכפתור גדי לגשת לטיונר גיטרה</string>
+    <string name="instruction1">טיונר גיטרה</string>
+    <string name="information">"אם אתה לא מצליח להגיע ל 0 כשאתה מכוון וזה קופץ בין 0 ל 1 ו 0 ל -1 זה בסדר והכלי שלך מכוון "</string>
+    <string name="guitar">גיטרה</string>
+    <string name="ukulele">יוקולילה</string>
+    <string name="bass">בס</string>
+    <string name="chromatic">כרומטי</string>
+    <string name="loading">טוען...</string>
+    <string name="language">שפה</string>
+</resources>
