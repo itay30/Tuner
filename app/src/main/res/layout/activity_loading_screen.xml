@@ -10,12 +10,23 @@
     android:background="@color/black"
     tools:context=".LoadingScreen">
 
-    <ImageView
-        android:id="@+id/loadingscreenpng"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:src="@drawable/loadingscreenpng"
-        android:layout_marginBottom="60dp"/>
+<!--    <ImageView-->
+<!--        android:id="@+id/loadingscreenpng"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:src="@drawable/loadingscreenpng"-->
+<!--        android:layout_marginBottom="60dp"/>-->
+
+    <pl.droidsonroids.gif.GifImageView
+        android:id="@+id/gifImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/loadinggif"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+    </pl.droidsonroids.gif.GifImageView>
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -29,7 +40,7 @@
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
             android:gravity="center"
             android:orientation="vertical">
 
@@ -37,8 +48,8 @@
                 android:id="@+id/textView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="90dp"
                 android:gravity="center"
+                android:layout_marginTop="90dp"
                 android:textColor="@color/white"
                 android:text="@string/title1"
                 android:textSize="45sp"
@@ -48,7 +59,7 @@
                 android:id="@+id/textView1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="355dp"
+                android:layout_marginTop="335dp"
                 android:text="@string/loading"
                 android:textColor="@android:color/white"
                 android:textSize="30sp" />
@@ -69,6 +80,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25dp" />
+
         </androidx.appcompat.widget.LinearLayoutCompat>
     </androidx.core.widget.NestedScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

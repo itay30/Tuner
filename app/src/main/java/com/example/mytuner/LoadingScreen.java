@@ -31,7 +31,7 @@ public class LoadingScreen extends AppCompatActivity {
 
 
         timer = new Timer();
-        int Period = 20;
+        int Period = 18;
         int delay = 0;
         timer.schedule( new TimerTask() {
             @SuppressLint("SetTextI18n")
