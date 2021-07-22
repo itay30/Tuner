@@ -4,7 +4,8 @@
     <string name="title6">Click to start tuning</string>
     <string name="guitar_tuner">Click the button to access the guitar tuner</string>
     <string name="instruction1">Guitar Tuner</string>
-    <string name="information">*if you are not hitting a complete 0 while you are tuning and it goes back and forth between 0 to 1 or 0 to -1 its ok and your instrument will be tuned</string>
+    <string name="information">The tuner will help you to tune your instruments easily with great precision. The tuner listens to the notes played and will guide you how to tune your instruments.
+                               The letter represents the note of the input sound that the device hears. The number below it represents the difference between the input sound note and its tuned note, that means how far is the input sound note from the note you may want to reach. And at the bottom of the page there is another number representing the frequency of the sound being played. How to tune - Go to the "tuner" page and select the instrument you want to tune. Find a quiet place and play the note loudly and clearly. The tuner will recognize the note being played and display a number which according to you must stretch / release the string until you hit "0".</string>
     <string name="guitar">Guitar</string>
     <string name="ukulele">Ukulele</string>
     <string name="bass">Bass</string>
