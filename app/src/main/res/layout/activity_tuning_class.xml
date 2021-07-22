@@ -77,8 +77,8 @@
             android:layout_gravity="center"
             android:text=""
             android:textColor="#FFFFFF"
-            android:textSize="20sp"
-            android:background="@color/dark_grey"/>
+            android:textSize="30sp"
+            android:background="@color/very_dark_grey"/>
 
     </LinearLayout>
 

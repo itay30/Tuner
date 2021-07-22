@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
     final Context context = this;
     Spinner spinner;
     Locale myLocale;
-    String currentLanguage = "iw-rlL", currentLang;
+    String currentLanguage = "iw", currentLang;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
                         setLocale("en");
                         break;
                     case 2:
-                        setLocale("il");
+                        setLocale("iw");
                         break;
                 }
             }
