@@ -13,10 +13,10 @@
 
     <TextView
         android:id="@+id/expected_note"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="C   C#   D   D#   E   F   F#   G   G#   A   A#   B "
+        android:text=" C   C#   D   D#   E   F   F#   G   G#   A   A#   B "
         android:textColor="#FFFFFF"
         android:textSize="18sp" />
 

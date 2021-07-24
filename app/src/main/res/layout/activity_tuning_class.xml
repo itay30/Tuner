@@ -77,7 +77,7 @@
             android:layout_gravity="center"
             android:text=""
             android:textColor="#FFFFFF"
-            android:textSize="30sp"
+            android:textSize="20sp"
             android:background="@color/very_dark_grey"/>
 
     </LinearLayout>
@@ -109,6 +109,5 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.21" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -76,6 +76,7 @@ public class TuningClass extends AppCompatActivity implements GestureDetector.On
                             //Sets the text boxes to display according to the hertz that is playing
                             NearestNote nearestNote = getNearestNote(inputHertz, TuneCase);
                             double diff = (inputHertz - nearestNote.hertz);
+                            current_hertz_small.setTextSize(20);
                             current_hertz_small.setText("" + String.format("%.1f", inputHertz));
                             expected_note.setText("" + nearestNote.note);
                             tuner_diff.setText("" + String.format("%.0f", diff));
@@ -104,6 +105,7 @@ public class TuningClass extends AppCompatActivity implements GestureDetector.On
                         public void run() {
                             //Sets the text boxes to display according to the hertz that was played
                             Note note = new Note(inputHertz);
+                            current_hertz_small.setTextSize(35);
                             current_hertz_small.setText("" + String.format("%.1f", inputHertz));
                             double diff = (inputHertz - note.getExactFrequency());
                             expected_note.setText("" + note.toString());
