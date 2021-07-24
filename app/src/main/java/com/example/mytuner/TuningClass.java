@@ -177,13 +177,13 @@ public class TuningClass extends AppCompatActivity implements GestureDetector.On
             return nearest_note;}
 
         else if(TuneCase.equals("bass")){
-            if (inputHertz >= 26 && inputHertz < 56)
+            if (inputHertz >= 26 && inputHertz < 45)
                 nearest_note = new NearestNote(41.2, 'E');
-            else if (inputHertz >= 40 && inputHertz < 70)
+            else if (inputHertz >= 46 && inputHertz < 65)
                 nearest_note = new NearestNote(55.0, 'A');
-            else if (inputHertz >= 58 && inputHertz < 88)
+            else if (inputHertz >= 66 && inputHertz < 85)
                 nearest_note = new NearestNote(73.4, 'D');
-            else if (inputHertz >= 83 && inputHertz < 113)
+            else if (inputHertz >= 86 && inputHertz < 113)
                 nearest_note = new NearestNote(98.0, 'G');
             else
                 nearest_note = new NearestNote(-1, ' ');
