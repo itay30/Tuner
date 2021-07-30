@@ -5,9 +5,9 @@
             android:layout_height="match_parent">
             <gradient
                 android:angle="135"
-                android:centerColor="#145B93"
-                android:endColor="#2B3B97"
-                android:startColor="#2B3B97" />
+                android:centerColor="#FFEFFF"
+                android:endColor="#9c9c9c"
+                android:startColor="#8c8c8c" />
         </shape>
     </item>
 </selector>
