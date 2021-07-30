@@ -10,6 +10,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerInside"
-        android:src="@drawable/guitarbackground"/>
+        android:src="@drawable/ic_guitarbackground1"/>
 
 </FrameLayout>
