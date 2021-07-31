@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">טיונר</string>
+    <string name="app_name">מי טיונר</string>
     <string name="title1">מזור טיונר</string>
     <string name="title6">לחץ להתחיל לכוון</string>
     <string name="guitar_tuner">לחץ על הכפתור גדי לגשת לטיונר גיטרה</string>
