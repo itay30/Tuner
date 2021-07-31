@@ -10,13 +10,6 @@
     android:background="@color/black"
     tools:context=".LoadingScreen">
 
-<!--    <ImageView-->
-<!--        android:id="@+id/loadingscreenpng"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:src="@drawable/loadingscreenpng"-->
-<!--        android:layout_marginBottom="60dp"/>-->
-
     <pl.droidsonroids.gif.GifImageView
         android:id="@+id/gifImageView"
         android:layout_width="wrap_content"
